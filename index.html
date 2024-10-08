@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Planning Presentation - Iowa State Theme</title>
+    <title>Establishing the Sales Dialogue - Iowa State Theme</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            color: #FFC72C; /* Gold text */
+            color: #F1BE48; /* Iowa State Gold */
             background: #000000; /* Black background */
-            height: 100vh;
             margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 20px;
         }
         .container {
             max-width: 800px;
-            width: 90%;
-            background: rgba(200, 16, 46, 0.9); /* Cardinal Red with slight transparency */
+            margin: 0 auto;
+            background: rgba(200, 16, 46, 0.9); /* Iowa State Cardinal with slight transparency */
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 4px 6px rgba(255, 199, 44, 0.3); /* Gold shadow */
+            box-shadow: 0 4px 6px rgba(241, 190, 72, 0.3); /* Gold shadow */
+        }
+        h1, h2 {
+            color: #F1BE48; /* Iowa State Gold */
         }
         .slide {
             display: none;
@@ -30,15 +30,6 @@
         }
         .slide.active {
             display: block;
-        }
-        h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #FFC72C; /* Gold */
-        }
-        p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
         }
         .icon {
             font-size: 3em;
@@ -51,10 +42,10 @@
         }
         button {
             padding: 10px 20px;
-            background: #FFC72C; /* Gold */
+            background: #F1BE48; /* Iowa State Gold */
             border: none;
             border-radius: 5px;
-            color: #C8102E; /* Cardinal Red */
+            color: #C8102E; /* Iowa State Cardinal */
             cursor: pointer;
             transition: background 0.3s ease;
             font-weight: bold;
@@ -64,20 +55,34 @@
         }
         .progress {
             height: 5px;
-            background: rgba(255, 199, 44, 0.3); /* Transparent gold */
+            background: rgba(241, 190, 72, 0.3); /* Transparent gold */
             margin-top: 20px;
             border-radius: 5px;
             overflow: hidden;
         }
         .progress-bar {
             height: 100%;
-            background: #FFC72C; /* Gold */
+            background: #F1BE48; /* Iowa State Gold */
             transition: width 0.3s ease;
+        }
+        .clickable {
+            cursor: pointer;
+            text-decoration: underline;
+            color: #FFD700; /* Lighter gold for clickable elements */
+        }
+        .details {
+            display: none;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #F1BE48;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <h1>Establishing the Sales Dialogue</h1>
         <div id="slideContainer"></div>
         <div class="controls">
             <button onclick="changeSlide(-1)">Previous</button>
@@ -88,27 +93,106 @@
         </div>
     </div>
     <script>
-        // The JavaScript remains the same as in the previous version
         const slides = [
-            { title: "Event Planning Process", content: "Crafting Unforgettable Experiences", icon: "🎉" },
-            { title: "Initial Contact", content: "Where Great Events Begin", icon: "🤝" },
-            { title: "Establish Credibility", content: "Building Trust, Delivering Excellence", icon: "🏆" },
-            { title: "Communication Arsenal", content: "Presentations. Proposals. Dialogues.", icon: "💼" },
-            { title: "Objectives", content: "Inform. Persuade. Remind.", icon: "🎯" },
-            { title: "The Art of Inquiry", content: "Asking the Right Questions", icon: "🔍" },
-            { title: "Client-Centric Approach", content: "Understanding Needs, Exceeding Expectations", icon: "🧠" },
-            { title: "Event Success", content: "Where Vision Meets Reality", icon: "🌟" }
+            {
+                title: "Learning Objectives",
+                content: "• Outline the types of sales communications.<br>• Explain the use of the three sales dialogue objectives.<br>• Describe the four elements of the sales contact plan.",
+                icon: "🎯"
+            },
+            {
+                title: "The Hospitality Sales Process",
+                content: "Gaining Access to the Hospitality Prospect involves:<br><span class='clickable' onclick='toggleDetails(\"access\")'>Click to learn more</span>",
+                icon: "🚪",
+                details: {
+                    id: "access",
+                    content: "• Identifying qualified prospects<br>• Making a good impression<br>• Securing attention"
+                }
+            },
+            {
+                title: "Access Objectives",
+                content: "• Initial contact with customer<br>• Three objectives: <span class='clickable' onclick='toggleDetails(\"objectives\")'>Click to see objectives</span><br>• Often a phone call",
+                icon: "📞",
+                details: {
+                    id: "objectives",
+                    content: "1. Build rapport<br>2. Capture full attention<br>3. Transition to Establish or 'need discovery' stage"
+                }
+            },
+            {
+                title: "From Access to Establish",
+                content: "After gaining Access and building rapport:<br>• Obtain permission to ask discovery questions related to:<br><span class='clickable' onclick='toggleDetails(\"discovery\")'>Click for types of information</span>",
+                icon: "🔍",
+                details: {
+                    id: "discovery",
+                    content: "• Personal information<br>• Business information<br>These help establish hospitality needs"
+                }
+            },
+            {
+                title: "The Types of Sales Communication",
+                content: "The Sales Communication Plan includes three elements:<br><span class='clickable' onclick='toggleDetails(\"communication\")'>Click to see elements</span>",
+                icon: "📊",
+                details: {
+                    id: "communication",
+                    content: "1. Canned presentations<br>2. Written proposals<br>3. Sales dialogues"
+                }
+            },
+            {
+                title: "Establish Credibility",
+                content: "• Credibility is an impression that people form about you<br>• <span class='clickable' onclick='toggleDetails(\"credibility\")'>Click for tips on maintaining credibility</span>",
+                icon: "🤝",
+                details: {
+                    id: "credibility",
+                    content: "Do not erode your credibility by:<br>• Arriving late<br>• Staying too long<br>• Not following up<br><br>Credibility grows when the customer realizes you are competent and can add value"
+                }
+            },
+            {
+                title: "Communication Objectives",
+                content: "Carefully selecting sales dialogue objectives can:<br><span class='clickable' onclick='toggleDetails(\"comm-objectives\")'>Click to see benefits</span><br><br>Three main objectives: Inform, Persuade, Remind",
+                icon: "🎯",
+                details: {
+                    id: "comm-objectives",
+                    content: "• Shorten the hospitality sales process<br>• Provide value to the customer<br>• Clarify the topics to be discussed if sent to the customer prior to the sales dialogue"
+                }
+            },
+            {
+                title: "Sales Dialogue Opening",
+                content: "• Convert prospect focus from social dialogue to business dialogue<br>• <span class='clickable' onclick='toggleDetails(\"dialogue-opening\")'>Click to see methods</span>",
+                icon: "🗣️",
+                details: {
+                    id: "dialogue-opening",
+                    content: "Methods to Capture Attention and Focus:<br>1. Agenda<br>2. Referral<br>3. Customer Benefit<br>4. Question<br>5. Premium<br>6. Combination"
+                }
+            },
+            {
+                title: "The Value of Asking Questions",
+                content: "• The effective use of questions to identify customer needs<br>• <span class='clickable' onclick='toggleDetails(\"question-types\")'>Click to see types of questions</span>",
+                icon: "❓",
+                details: {
+                    id: "question-types",
+                    content: "1. Discovery Questions<br>2. Probing Questions<br>3. Confirmation Questions<br>4. Object Fulfillment Questions"
+                }
+            },
+            {
+                title: "Being a Trusted Consultant",
+                content: "Active listening is the key!<br><span class='clickable' onclick='toggleDetails(\"active-listening\")'>Click for more on active listening</span>",
+                icon: "👂",
+                details: {
+                    id: "active-listening",
+                    content: "Deep understanding of all of the information that the prospect is imparting, both with their words and with their body language"
+                }
+            }
         ];
 
         let currentSlide = 0;
 
         function renderSlide() {
             const slideContainer = document.getElementById('slideContainer');
+            const slide = slides[currentSlide];
             slideContainer.innerHTML = `
                 <div class="slide active">
-                    <div class="icon">${slides[currentSlide].icon}</div>
-                    <h2>${slides[currentSlide].title}</h2>
-                    <p>${slides[currentSlide].content}</p>
+                    <div class="icon">${slide.icon}</div>
+                    <h2>${slide.title}</h2>
+                    <p>${slide.content}</p>
+                    ${slide.details ? `<div id="${slide.details.id}" class="details">${slide.details.content}</div>` : ''}
                 </div>
             `;
             updateProgressBar();
@@ -123,6 +207,11 @@
             const progressBar = document.getElementById('progressBar');
             const progress = ((currentSlide + 1) / slides.length) * 100;
             progressBar.style.width = `${progress}%`;
+        }
+
+        function toggleDetails(id) {
+            const details = document.getElementById(id);
+            details.style.display = details.style.display === 'none' ? 'block' : 'none';
         }
 
         renderSlide();
