@@ -78,6 +78,12 @@
             padding: 20px;
             margin-top: 20px;
         }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -133,7 +139,8 @@
                 details: {
                     id: "communication",
                     content: "1. Canned presentations<br>2. Written proposals<br>3. Sales dialogues"
-                }
+                },
+                image: "https://example.com/path_to_image_4.jpg"
             },
             {
                 title: "Establish Credibility",
@@ -142,7 +149,8 @@
                 details: {
                     id: "credibility",
                     content: "Do not erode your credibility by:<br>• Arriving late<br>• Staying too long<br>• Not following up<br><br>Credibility grows when the customer realizes you are competent and can add value"
-                }
+                },
+                image: "https://example.com/path_to_image_3.jpg"
             },
             {
                 title: "Communication Objectives",
@@ -169,7 +177,8 @@
                 details: {
                     id: "question-types",
                     content: "1. Discovery Questions<br>2. Probing Questions<br>3. Confirmation Questions<br>4. Object Fulfillment Questions"
-                }
+                },
+                image: "https://example.com/path_to_image_2.jpg"
             },
             {
                 title: "Being a Trusted Consultant",
@@ -178,7 +187,8 @@
                 details: {
                     id: "active-listening",
                     content: "Deep understanding of all of the information that the prospect is imparting, both with their words and with their body language"
-                }
+                },
+                image: "https://example.com/path_to_image_1.jpg"
             }
         ];
 
@@ -191,6 +201,7 @@
                 <div class="slide active">
                     <div class="icon">${slide.icon}</div>
                     <h2>${slide.title}</h2>
+                    ${slide.image ? `<img src="${slide.image}" alt="${slide.title}">` : ''}
                     <p>${slide.content}</p>
                     ${slide.details ? `<div id="${slide.details.id}" class="details">${slide.details.content}</div>` : ''}
                 </div>
