@@ -4,13 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Planning Presentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .slide {
+            display: none;
+            text-align: center;
+        }
+        .slide.active {
+            display: block;
+        }
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .progress {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            margin-top: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+    </style>
 </head>
 <body>
-    <h1>Event Planning Presentation</h1>
-    <div id="root"></div>
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script type="text/babel" src="presentation.js"></script>
+    <div class="container">
+        <div id="slideContainer"></div>
+        <div class="controls">
+            <button onclick="changeSlide(-1)">Previous</button>
+            <button onclick="changeSlide(1)">Next</button>
+        </div>
+        <div class="progress">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+    </div>
+    <script>
+        const slides = [
+            { title: "Event Planning Process", content: "Crafting Unforgettable Experiences", icon: "🎉" },
+            { title: "Initial Contact", content: "Where Great Events Begin", icon: "🤝" },
+            { title: "Establish Credibility", content: "Building Trust, Delivering Excellence", icon: "🏆" },
+            { title: "Communication Arsenal", content: "Presentations. Proposals. Dialogues.", icon: "💼" },
+            { title: "Objectives", content: "Inform. Persuade. Remind.", icon: "🎯" },
+            { title: "The Art of Inquiry", content: "Asking the Right Questions", icon: "🔍" },
+            { title: "Client-Centric Approach", content: "Understanding Needs, Exceeding Expectations", icon: "🧠" },
+            { title: "Event Success", content: "Where Vision Meets Reality", icon: "🌟" }
+        ];
+
+        let currentSlide = 0;
+
+        function renderSlide() {
+            const slideContainer = document.getElementById('slideContainer');
+            slideContainer.innerHTML = `
+                <div class="slide active">
+                    <div class="icon">${slides[currentSlide].icon}</div>
+                    <h2>${slides[currentSlide].title}</h2>
+                    <p>${slides[currentSlide].content}</p>
+                </div>
+            `;
+            updateProgressBar();
+        }
+
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            renderSlide();
+        }
+
+        function updateProgressBar() {
+            const progressBar = document.getElementById('progressBar');
+            const progress = ((currentSlide + 1) / slides.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        renderSlide();
+    </script>
 </body>
 </html>
